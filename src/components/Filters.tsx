@@ -5,7 +5,7 @@ import Dropdown from './common/Dropdown';
 import Button from './common/Button';
 import { getChampionshipsFromApi, getGroupFromApi, getTeamFromApiByGroup, getTerritoriesFromApi } from '@/services/api';
 import { getAllSeasonsOptions, getSeason } from '@/helpers/season';
-
+import { Option } from '@/types';
 
 const Filter: React.FC = () => {
 

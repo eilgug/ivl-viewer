@@ -1,4 +1,4 @@
-import { Season } from "@/types";
+import { Option, Season } from "@/types";
 
 export const getSeason = (startYear: number): Season => {
     return {

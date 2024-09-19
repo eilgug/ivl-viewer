@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { DropdownMenuProps, Option } from '@/types';
+import React from 'react';
 import { Dropdown as ReactDropdown } from 'react-bootstrap';
 
 const Dropdown: React.FC<{ dropDownMenuProps: DropdownMenuProps, selectedOption: Option | null, handleSelect: Function }> = ({ dropDownMenuProps, selectedOption, handleSelect }) => {
