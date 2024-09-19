@@ -4,21 +4,27 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev-host": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
+    "next": "14.2.8",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.8"
+    "react-bootstrap": "^2.10.4",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@types/bootstrap": "^5.2.10",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.8"
+    "eslint-config-next": "14.2.8",
+    "typescript": "^5"
   }
 }
