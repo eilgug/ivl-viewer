@@ -40,3 +40,13 @@ a {
     color-scheme: dark;
   }
 }
+
+.truncate-button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-menu-full-size {
+  width: 100%;
+}
