@@ -6,15 +6,13 @@ const Dropdown: React.FC<{ dropDownMenuProps: DropdownMenuProps, selectedOption:
 
   return (
     <ReactDropdown>
-
       <div className='d-grid gap-2'>
-        <ReactDropdown.Toggle className='truncate-button' variant="light" id="dropdown-basic">
+        <ReactDropdown.Toggle className='truncate-text' variant="light" id="dropdown-basic">
           {selectedOption ? selectedOption.label : dropDownMenuProps.defaultLabel}
         </ReactDropdown.Toggle>
       </div>
       <DropdownMenu options={dropDownMenuProps.options} handleSelect={handleSelect} />
     </ReactDropdown>
-
   );
 }
 
@@ -23,7 +21,7 @@ const DropdownMenu: React.FC<{ options: Option[], handleSelect: Function }> = ({
     return (
       <ReactDropdown.Menu className='dropdown-menu-full-size'>
         {options.map((option: Option) => (
-          <ReactDropdown.Item key={option.id} onClick={() => handleSelect(option)}>
+          <ReactDropdown.Item className='truncate-text' key={option.id} onClick={() => handleSelect(option)}>
             {option.label}
           </ReactDropdown.Item>
         ))}

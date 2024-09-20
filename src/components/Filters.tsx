@@ -115,10 +115,18 @@ const Filter: React.FC = () => {
         setSelectedTeam(option);
     }
 
+    const handleReset = () => {
+        setSelectedTerritory(null);
+        setSelectedChampionship(null);
+        setSelectedGroup(null);
+        setSelectedTeam(null);
+        setSelectedSeason(null);
+    }
+
     return (
         <div>
 
-            <div className='row gy-3 gx-2 row-cols-1 row-cols-lg-5 '>
+            <div className='row gy-3 gx-2 mb-3 row-cols-1 row-cols-lg-5 '>
                 <div className='col'>
                     <Dropdown dropDownMenuProps={{ options: seasonOptions || [], defaultLabel: 'Seleziona una stagione' }} selectedOption={selectedSeason} handleSelect={handleSelectSeason} />
                 </div>
@@ -135,9 +143,12 @@ const Filter: React.FC = () => {
                     <Dropdown dropDownMenuProps={{ options: teamOptions || [], defaultLabel: 'Seleziona una squadra' }} selectedOption={selectedTeam} handleSelect={handleSelectTeam} />
                 </div>
             </div>
-            <div className='row mt-3 row-cols-1 text-center '>
+            <div className='row gy-3 row-cols-1 row-cols-lg-2 text-center '>
                 <div className='col'>
                     <Button variant='success' label='Cerca' />
+                </div>
+                <div className='col'>
+                    <Button variant='outline-danger' label='Reset' handleClick={handleReset}/>
                 </div>
             </div>
         </div>
