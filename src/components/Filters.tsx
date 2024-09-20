@@ -1,6 +1,5 @@
 'use client';
-import axios from 'axios';
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dropdown from './common/Dropdown';
 import Button from './common/Button';
 import { getChampionshipsFromApi, getGroupFromApi, getTeamFromApiByGroup, getTerritoriesFromApi } from '@/services/api';
@@ -8,7 +7,6 @@ import { getAllSeasonsOptions, getSeason } from '@/helpers/season';
 import { Option } from '@/types';
 
 const Filter: React.FC = () => {
-
     const seasons: Option[] = getAllSeasonsOptions(2020).reverse();
 
     // Options
@@ -30,7 +28,7 @@ const Filter: React.FC = () => {
         if (!seasonOptions) {
             setSeasonOptions(seasons);
         }
-    }   , [seasonOptions]);
+    }, [seasonOptions]);
 
     // Territory
     useEffect(() => {
