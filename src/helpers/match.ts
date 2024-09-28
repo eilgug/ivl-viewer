@@ -6,6 +6,7 @@ import { getTeamStandingInfoByName } from "./standing";
 export const getNextMatchInfo = async (season: Season, teamId: number, groupId: number, territoryId: number | null = null, championshipId: number | null = null): Promise<MatchInfo | null> => {
     // set season start date from today
     season.start = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    season.start = '2023-09-01'; // for testing
     const matchDataFromApi = await getMatchsDataFromApi(season, teamId, territoryId, championshipId, groupId, 1);
     if (matchDataFromApi.length === 0) {
         return null;
@@ -13,8 +14,8 @@ export const getNextMatchInfo = async (season: Season, teamId: number, groupId: 
 
     const standingsFromApi = await getStandingsFromApi(season, groupId);
 
-    const homeStandingInfo = getTeamStandingInfoByName(matchDataFromApi[0].squadra_casa_name, standingsFromApi);
-    const guestStandingInfo = getTeamStandingInfoByName(matchDataFromApi[0].squadra_ospite_name, standingsFromApi);
+    const homeStandingInfo = await getTeamStandingInfoByName(matchDataFromApi[0].squadra_casa_name, standingsFromApi);
+    const guestStandingInfo = await getTeamStandingInfoByName(matchDataFromApi[0].squadra_ospite_name, standingsFromApi);
 
     const matchInfo: MatchInfo | null = convertMatchApiToMatchInfo(matchDataFromApi[0], homeStandingInfo, guestStandingInfo);
     return matchInfo;

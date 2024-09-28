@@ -2,6 +2,7 @@
 import React from "react";
 import NextMatch from "@/components/NextMatch";
 import { useSearchParams } from "next/navigation";
+import Standing from "@/components/Standing";
 
 const InfoPage: React.FC = async () => {
     const searchParams = useSearchParams();
@@ -17,6 +18,7 @@ const InfoPage: React.FC = async () => {
             <main>
                 <div className="my-3">
                     <NextMatch teamId={teamId} groupId={groupId} season={season} />
+                    <Standing season={season} groupId={groupId} />
                 </div>
             </main>
         </div>

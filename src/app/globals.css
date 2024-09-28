@@ -61,3 +61,30 @@ a {
   font-size: 20px;
   color: #888;
 }
+
+.podium-block {
+  margin: 0 0 0 0;
+}
+
+.podium-block .truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds ellipsis (...) when text overflows */
+}
+
+.podium-block div {
+  text-align: center;
+}
+
+.podium-block .rounded {
+  border-radius: 10px; /* Smooth rounded corners */
+}
+
+.podium-block .text-white {
+  color: #ffffff !important; /* Ensure white text on colored backgrounds */
+}
+
+.podium-block p {
+  margin-top: 0; /* Removes default margin from the paragraph */
+  margin-bottom: 0; /* Removes default margin from the paragraph */
+}

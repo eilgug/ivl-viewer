@@ -30,4 +30,5 @@ export type MatchInfo = {
 export type StandingInfo = {
     position: number;
     points: number;
+    name: string;
 }

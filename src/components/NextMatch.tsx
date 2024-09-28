@@ -30,9 +30,7 @@ const NextMatch: React.FC<{ teamId: number, groupId: number, season: number }> =
 const CardContent: React.FC<{ matchInfo: MatchInfo | null }> = ({ matchInfo }) => {
     if (matchInfo != null) {
         return (
-            <Card.Text>
-                <Match matchInfo={matchInfo} />
-            </Card.Text>
+            <Match matchInfo={matchInfo} />
         );
     } else {
         return (
