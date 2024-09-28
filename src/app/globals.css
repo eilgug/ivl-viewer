@@ -50,3 +50,14 @@ a {
 .dropdown-menu-full-size {
   width: 100%;
 }
+
+.team-name {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.vs {
+  font-size: 20px;
+  color: #888;
+}
