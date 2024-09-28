@@ -5,6 +5,7 @@ import Button from './common/Button';
 import { getChampionshipsFromApi, getGroupFromApi, getTeamFromApiByGroup, getTerritoriesFromApi } from '@/services/api';
 import { getAllSeasonsOptions, getSeason } from '@/helpers/season';
 import { Option } from '@/types';
+import { navigate } from '@/helpers/navigation';
 
 const Filter: React.FC = () => {
     const seasons: Option[] = getAllSeasonsOptions(2020).reverse();
@@ -123,9 +124,12 @@ const Filter: React.FC = () => {
         setSelectedSeason(null);
     }
 
+    const handleSubmit = () => {
+        navigate(selectedSeason!.id, selectedTeam!.id, selectedTerritory!.id, selectedChampionship!.id, selectedGroup!.id);
+    }
+
     return (
         <div>
-
             <div className='row gy-3 gx-2 mb-3 row-cols-1 row-cols-lg-5 '>
                 <div className='col'>
                     <Dropdown dropDownMenuProps={{ options: seasonOptions || [], defaultLabel: 'Seleziona una stagione' }} selectedOption={selectedSeason} handleSelect={handleSelectSeason} />
@@ -145,7 +149,7 @@ const Filter: React.FC = () => {
             </div>
             <div className='row gy-3 row-cols-1 row-cols-lg-2 text-center '>
                 <div className='col'>
-                    <Button variant='success' label='Cerca' />
+                    <Button variant='success' label='Cerca' handleClick={handleSubmit} />
                 </div>
                 <div className='col'>
                     <Button variant='outline-danger' label='Reset' handleClick={handleReset}/>
