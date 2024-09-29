@@ -3,7 +3,7 @@ import { getSeason } from "@/helpers/season";
 import { getStandings } from "@/helpers/standing";
 import { StandingInfo } from "@/types";
 import { useEffect, useState } from "react";
-import { Card, Stack } from "react-bootstrap";
+import { Card, ListGroup, Stack } from "react-bootstrap";
 
 const Standing: React.FC<{ season: number, groupId: number }> = ({ season, groupId }) => {
 
@@ -30,7 +30,10 @@ const Standing: React.FC<{ season: number, groupId: number }> = ({ season, group
 const CardContent: React.FC<{ standing: StandingInfo[] | null }> = ({ standing }) => {
     if (standing != null) {
         return (
-            <Podium standing={standing} />
+            <div>
+                <Podium standing={standing} />
+                <Ladder standing={standing} />
+            </div>
         );
     } else {
         return (
@@ -40,31 +43,6 @@ const CardContent: React.FC<{ standing: StandingInfo[] | null }> = ({ standing }
         );
     }
 }
-
-// const Podium: React.FC<{ standing: StandingInfo[] }> = ({ standing }) => {
-//     return (
-//         <Stack direction="horizontal" className="align-items-end">
-//             <Block medal={'🥈'} name={'ORATORIO SANTA VALERIA'} points={2} height={75} color="silver" />
-//             <Block medal={'🥇'} name={'aaaaaaaaaaaaaaaaaaaaaaaa'} points={2} height={100} color="gold" />
-//             <Block medal={'🥉'} name={'aaaaaaaaaaaaaaaaaaaaaaaa'} points={2} height={50} color="brown" />
-//         </Stack>
-//     );
-// }
-
-// const Block: React.FC<{ medal: string, name: string, points: number, height: number, color: string }> = ({ medal, name, points, height, color }) => {
-//     return (
-//         <Stack className="justify-content-end align-items-center">
-//             <div className="text-center mb-2">{medal}</div>
-//             <div>
-
-//             </div>
-//             <div className="text-center" style={{ height: height, width: 100, backgroundColor: color }}>
-//                 <div className="truncate-text">{name}</div>
-//                 <p><small>{points}</small></p>
-//             </div>
-//         </Stack>
-//     );
-// }
 
 const Podium: React.FC<{ standing: StandingInfo[] }> = ({ standing }) => {
     return (
@@ -99,6 +77,24 @@ const Podium: React.FC<{ standing: StandingInfo[] }> = ({ standing }) => {
         </div>
     );
 };
+
+const Ladder: React.FC<{ standing: StandingInfo[] }> = ({ standing }) => {
+    return (
+        <ListGroup>
+            {/* skip first 3 element */}
+            {standing.slice(3).map((team, index) => {
+                return (
+                    <ListGroup.Item key={index + 4}>
+                        <Stack direction="horizontal" gap={1} className="justify-content-between">
+                            <div className="truncate-text">{team.name}</div>
+                            <div className="ms-auto p-2">{team.points}</div>
+                        </Stack>
+                    </ListGroup.Item>
+                );
+            })}
+        </ListGroup>
+    );
+}
 
 const Block: React.FC<{ medal: string, name: string, points: number, height: number, color: string }> = ({ medal, name, points, height, color }) => {
     return (
