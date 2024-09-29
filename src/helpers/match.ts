@@ -6,7 +6,7 @@ import { getTeamStandingInfoByName } from "./standing";
 export const getNextMatchInfo = async (season: Season, teamId: number, groupId: number, territoryId: number | null = null, championshipId: number | null = null): Promise<MatchInfo | null> => {
     // set season start date from today
     season.start = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-    season.start = '2023-09-01'; // for testing
+
     const matchDataFromApi = await getMatchsDataFromApi(season, teamId, territoryId, championshipId, groupId, 1);
     if (matchDataFromApi.length === 0) {
         return null;
