@@ -66,11 +66,11 @@ const Match: React.FC<{ matchInfo: MatchInfo }> = ({ matchInfo }) => {
 
 const Team: React.FC<{ teamInfo: TeamInfo }> = ({ teamInfo }) => {
     return (
-        <Stack gap={3} className="justify-content-between h-100">
+        <Stack gap={3} className="justify-content-between align-items-center h-100">
             <div className="team-name d-flex align-items-center flex-grow-1">
                 {teamInfo.name}
             </div>
-            <Stack direction="horizontal" gap={3}>
+            <Stack direction="horizontal" gap={3} className="justify-content-center">
                 <div><small>Pos. {teamInfo.position}˚</small></div>
                 <div className="vr" />
                 <div><small>Pts. {teamInfo.points}</small></div>
