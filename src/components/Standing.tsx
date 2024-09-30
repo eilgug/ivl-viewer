@@ -11,7 +11,7 @@ const Standing: React.FC<{ season: number, groupId: number }> = ({ season, group
 
     useEffect(() => {
         if (!standing) {
-            getStandings(getSeason(2023), 398).then((standing) => {
+            getStandings(getSeason(season), groupId).then((standing) => {
                 setStanding(standing);
             });
         }
