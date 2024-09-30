@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { Suspense } from "react";
 import NextMatch from "@/components/NextMatch";
 import { useSearchParams } from "next/navigation";
 import Standing from "@/components/Standing";
@@ -14,14 +14,16 @@ const InfoPage: React.FC = async () => {
     const teamId: number = parseInt(searchParams.get("team") as string);
 
     return (
-        <div className="container vh-100">
-            <main>
-                <div className="my-3">
-                    <NextMatch teamId={teamId} groupId={groupId} season={season} />
-                    <Standing season={season} groupId={groupId} />
-                </div>
-            </main>
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+            <div className="container vh-100">
+                <main>
+                    <div className="my-3">
+                        <NextMatch teamId={teamId} groupId={groupId} season={season} />
+                        <Standing season={season} groupId={groupId} />
+                    </div>
+                </main>
+            </div>
+        </Suspense>
     );
 }
 
