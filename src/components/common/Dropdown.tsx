@@ -2,7 +2,7 @@ import React from 'react';
 import { DropdownMenuProps, Option } from '@/types';
 import { Dropdown as ReactDropdown } from 'react-bootstrap';
 
-const Dropdown: React.FC<{ dropDownMenuProps: DropdownMenuProps, selectedOption: Option | null, handleSelect: Function }> = ({ dropDownMenuProps, selectedOption, handleSelect }) => {
+const Dropdown: React.FC<{ dropDownMenuProps: DropdownMenuProps, selectedOption: Option | null, handleSelect: (option: Option) => void }> = ({ dropDownMenuProps, selectedOption, handleSelect }) => {
 
   return (
     <ReactDropdown>
@@ -16,7 +16,7 @@ const Dropdown: React.FC<{ dropDownMenuProps: DropdownMenuProps, selectedOption:
   );
 }
 
-const DropdownMenu: React.FC<{ options: Option[], handleSelect: Function }> = ({ options, handleSelect }) => {
+const DropdownMenu: React.FC<{ options: Option[], handleSelect: (option: Option) => void }> = ({ options, handleSelect }) => {
   if (options.length) {
     return (
       <ReactDropdown.Menu className='dropdown-menu-full-size'>

@@ -8,8 +8,8 @@ const InfoPage: React.FC = async () => {
     const searchParams = useSearchParams();
 
     const season: number = parseInt(searchParams.get("season") as string);
-    const territoryId: number = parseInt(searchParams.get("territory") as string);
-    const championshipId: number = parseInt(searchParams.get("championship") as string);
+    // const territoryId: number = parseInt(searchParams.get("territory") as string);
+    // const championshipId: number = parseInt(searchParams.get("championship") as string);
     const groupId: number = parseInt(searchParams.get("group") as string);
     const teamId: number = parseInt(searchParams.get("team") as string);
 

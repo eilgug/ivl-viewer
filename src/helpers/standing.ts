@@ -25,7 +25,7 @@ export async function getStandings(season: Season, groupId: number): Promise<Sta
             position: standing.Posizione,
             points: standing.Punteggio,
             name: standing.name
-        }
+        } as StandingInfo;
     });
 
     return standings.sort((a, b) => b.points - a.points);

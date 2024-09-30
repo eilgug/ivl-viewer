@@ -11,7 +11,7 @@ const NextMatch: React.FC<{ teamId: number, groupId: number, season: number }> =
 
     useEffect(() => {
         if (!matchInfo) {
-            getNextMatchInfo(getSeason(2023), teamId, groupId).then((matchInfo) => {
+            getNextMatchInfo(getSeason(season), teamId, groupId).then((matchInfo) => {
                 setMatchInfo(matchInfo);
             });
         }

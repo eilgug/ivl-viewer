@@ -44,7 +44,7 @@ export class RestManager {
         return this.axiosInstance.get(url, config);
     }
 
-    public post<T>(url: string, data: any, config: AxiosRequestConfig = {}): Promise<T> {
+    public post<T>(url: string, data: Record<string, unknown>, config: AxiosRequestConfig = {}): Promise<T> {
         return this.axiosInstance.post(url, data, config);
     }
 }

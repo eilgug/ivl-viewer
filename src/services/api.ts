@@ -13,12 +13,12 @@ const endpoints = {
     GET_TEAM_FROM_GROUP: '/SquadreIscritteAGirone',
 };
 
-export type TerritoryAPI = { id: number; name: string;[key: string]: any }
-export type ChampionshipAPI = { id: number; name: string;[key: string]: any }
-export type GroupAPI = { id: number; name: string;[key: string]: any }
-export type TeamAPI = { id: number; name: string;[key: string]: any }
-export type MatchAPI = { id: number;[key: string]: any }
-export type StandingsAPI = { name: string; Punteggio:number, [key: string]: any }
+export type TerritoryAPI = { id: number; name: string;[key: string]: unknown }
+export type ChampionshipAPI = { id: number; name: string;[key: string]: unknown }
+export type GroupAPI = { id: number; name: string;[key: string]: unknown }
+export type TeamAPI = { id: number; name: string;[key: string]: unknown }
+export type MatchAPI = { id: number; squadra_casa_name: string; squadra_ospite_name: string; DataGioco: string; squadra_casa_logo: string; squadra_ospite_logo: string;[key: string]: unknown }
+export type StandingsAPI = { name: string; Punteggio: number, [key: string]: unknown }
 
 export const getTerritoriesFromApi = (): Promise<TerritoryAPI[]> => {
     return restClient.get(endpoints.GET_TERRITORY_PUBLIC, { headers: { 'withCredentials': 'true' } });
