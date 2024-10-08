@@ -3,6 +3,20 @@ import { getMatchsDataFromApi, getStandingsFromApi, MatchAPI } from "@/services/
 import { MatchInfo, Season, StandingInfo } from "@/types"
 import { getTeamStandingInfoByName } from "./standing";
 
+export const getMatches = async (season: Season, groupId: number, teamId: number): Promise<MatchInfo[]> => {
+    const matchDataFromApi = await getMatchsDataFromApi(season, teamId, null, null, groupId, 0);
+    const standingsFromApi = await getStandingsFromApi(season, groupId);
+
+    const matches: MatchInfo[] = [];
+    for (const match of matchDataFromApi) {
+        const homeStandingInfo = await getTeamStandingInfoByName(match.squadra_casa_name, standingsFromApi);
+        const guestStandingInfo = await getTeamStandingInfoByName(match.squadra_ospite_name, standingsFromApi);
+
+        matches.push(convertMatchApiToMatchInfo(match, homeStandingInfo, guestStandingInfo));
+    }
+    return matches;
+}
+
 export const getNextMatchInfo = async (season: Season, teamId: number, groupId: number, territoryId: number | null = null, championshipId: number | null = null): Promise<MatchInfo | null> => {
     // set season start date from today
     season.start = new Date().toISOString().split('T')[0]; // YYYY-MM-DD

@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import NextMatch from "@/components/NextMatch";
 import { useSearchParams } from "next/navigation";
 import Standing from "@/components/Standing";
+import Calendar from "@/components/Calendar";
 
 const InfoPageContent: React.FC = () => {
     const searchParams = useSearchParams();
@@ -19,6 +20,7 @@ const InfoPageContent: React.FC = () => {
                 <div className="my-3">
                     <NextMatch teamId={teamId} groupId={groupId} season={season} />
                     <Standing season={season} groupId={groupId} />
+                    <Calendar season={season} groupId={groupId} teamId={teamId} />
                 </div>
             </main>
         </div>
