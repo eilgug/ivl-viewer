@@ -25,6 +25,9 @@ export type MatchInfo = {
     place: string;
     home: TeamInfo;
     guest: TeamInfo;
+    result?: string;
+    homeSetScore?: number;
+    guestSetScore?: number;
 }
 
 export type StandingInfo = {

@@ -17,7 +17,7 @@ export type TerritoryAPI = { id: number; name: string;[key: string]: unknown }
 export type ChampionshipAPI = { id: number; name: string;[key: string]: unknown }
 export type GroupAPI = { id: number; name: string;[key: string]: unknown }
 export type TeamAPI = { id: number; name: string;[key: string]: unknown }
-export type MatchAPI = { id: number; squadra_casa_name: string; squadra_ospite_name: string; DataGioco: string; squadra_casa_logo: string; squadra_ospite_logo: string;[key: string]: unknown }
+export type MatchAPI = { id: number; squadra_casa_name: string; squadra_ospite_name: string; DataGioco: string; squadra_casa_logo: string; squadra_ospite_logo: string; Info: string; ris_set_casa: number; ris_set_ospite: number;[key: string]: unknown }
 export type StandingsAPI = { name: string; Punteggio: number, [key: string]: unknown }
 
 export const getTerritoriesFromApi = (): Promise<TerritoryAPI[]> => {

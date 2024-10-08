@@ -2,6 +2,7 @@
 import { getMatchsDataFromApi, getStandingsFromApi, MatchAPI } from "@/services/api"
 import { MatchInfo, Season, StandingInfo } from "@/types"
 import { getTeamStandingInfoByName } from "./standing";
+import { bannedWords } from "./utils";
 
 export const getMatches = async (season: Season, groupId: number, teamId: number): Promise<MatchInfo[]> => {
     const matchDataFromApi = await getMatchsDataFromApi(season, teamId, null, null, groupId, 0);
@@ -40,16 +41,19 @@ function convertMatchApiToMatchInfo(matchDataFromApi: MatchAPI, homeStandingInfo
         date: new Date(matchDataFromApi.DataGioco.replace(' ', 'T')),
         place: `${matchDataFromApi.Palestra} - ${matchDataFromApi.Palestra_indirizzo}`,
         home: {
-            name: matchDataFromApi.squadra_casa_name,
+            name: matchDataFromApi.squadra_casa_name.replace(bannedWords(), '').trim(),
             logo: matchDataFromApi.squadra_casa_logo,
             position: homeStandingInfo.position,
             points: homeStandingInfo.points
         },
         guest: {
-            name: matchDataFromApi.squadra_ospite_name,
+            name: matchDataFromApi.squadra_ospite_name.replace(bannedWords(), '').trim(),
             logo: matchDataFromApi.squadra_ospite_logo,
             position: guestStandingInfo.position,
             points: guestStandingInfo.points
-        }
+        },
+        result: matchDataFromApi.Info,
+        homeSetScore: matchDataFromApi.ris_set_casa,
+        guestSetScore: matchDataFromApi.ris_set_ospite
     }
 }

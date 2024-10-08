@@ -1,6 +1,7 @@
 'use server'
 import { getStandingsFromApi, StandingsAPI } from "@/services/api";
 import { Season, StandingInfo } from "@/types";
+import { bannedWords } from "./utils";
 
 export async function getTeamStandingInfoByName(name: string, standings: StandingsAPI[]): Promise<StandingInfo> {
     const index = standings.findIndex((standing) => standing.name === name);
@@ -24,7 +25,7 @@ export async function getStandings(season: Season, groupId: number): Promise<Sta
         return {
             position: standing.Posizione,
             points: standing.Punteggio,
-            name: standing.name
+            name: standing.name.replace(bannedWords(), '').trim()
         } as StandingInfo;
     });
 
