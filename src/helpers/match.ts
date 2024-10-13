@@ -38,7 +38,7 @@ export const getNextMatchInfo = async (season: Season, teamId: number, groupId: 
 
 function convertMatchApiToMatchInfo(matchDataFromApi: MatchAPI, homeStandingInfo: StandingInfo, guestStandingInfo: StandingInfo): MatchInfo {
     return {
-        date: new Date(matchDataFromApi.DataGioco.replace(' ', 'T')),
+        date: new Date(matchDataFromApi.DataGioco),
         place: `${matchDataFromApi.Palestra} - ${matchDataFromApi.Palestra_indirizzo}`,
         home: {
             name: matchDataFromApi.squadra_casa_name.replace(bannedWords(), '').trim(),
