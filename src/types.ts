@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export type Option = {
     id: number;
     label: string;
@@ -21,7 +23,7 @@ export type TeamInfo = {
 }
 
 export type MatchInfo = {
-    date: Date;
+    date: string;
     place: string;
     home: TeamInfo;
     guest: TeamInfo;

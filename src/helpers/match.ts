@@ -3,6 +3,7 @@ import { getMatchsDataFromApi, getStandingsFromApi, MatchAPI } from "@/services/
 import { MatchInfo, Season, StandingInfo } from "@/types"
 import { getTeamStandingInfoByName } from "./standing";
 import { bannedWords } from "./utils";
+import dayjs from "dayjs";
 
 export const getMatches = async (season: Season, groupId: number, teamId: number): Promise<MatchInfo[]> => {
     const matchDataFromApi = await getMatchsDataFromApi(season, teamId, null, null, groupId, 0);
@@ -38,7 +39,7 @@ export const getNextMatchInfo = async (season: Season, teamId: number, groupId: 
 
 function convertMatchApiToMatchInfo(matchDataFromApi: MatchAPI, homeStandingInfo: StandingInfo, guestStandingInfo: StandingInfo): MatchInfo {
     return {
-        date: new Date(matchDataFromApi.DataGioco),
+        date: dayjs(matchDataFromApi.DataGioco, "YYYY-MM-DD HH:mm:ss").format("DD/MM/YYYY HH:mm"),
         place: `${matchDataFromApi.Palestra} - ${matchDataFromApi.Palestra_indirizzo}`,
         home: {
             name: matchDataFromApi.squadra_casa_name.replace(bannedWords(), '').trim(),

@@ -57,7 +57,7 @@ const Match: React.FC<{ matchInfo: MatchInfo }> = ({ matchInfo }) => {
             </div>
             <br />
             <Stack>
-                <div className="text-center"><small>{matchInfo.date.toLocaleString('it-IT', { day: "2-digit", month: "2-digit", year: "numeric", minute: "2-digit", hour: "2-digit" })}</small></div>
+                <div className="text-center"><small>{matchInfo.date}</small></div>
                 <div className="text-center"><small>{matchInfo.place}</small></div>
             </Stack>
         </div>

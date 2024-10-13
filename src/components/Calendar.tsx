@@ -55,7 +55,7 @@ const Matches: React.FC<{ calendar: MatchInfo[] }> = ({ calendar }) => {
                         </div>
                         <Result match={match} />
                         <Stack className="mt-1 justify-content-around text-center">
-                            <div style={{ color: 'black', fontSize: '0.7rem' }}>{match.date.toLocaleString('it-IT', { day: "2-digit", month: "2-digit", year: "numeric", minute: "2-digit", hour: "2-digit" })}</div>
+                            <div style={{ color: 'black', fontSize: '0.7rem' }}>{match.date}</div>
                             <div style={{ color: 'black', fontSize: '0.7rem' }}>{match.place}</div>
                         </Stack>
                     </ListGroup.Item>
